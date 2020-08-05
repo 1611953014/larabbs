@@ -1,8 +1,8 @@
 <?php
-///** @var Factory $factory */
+/** @var Factory $factory */
 
 use Faker\Generator as Faker;
-//use Illuminate\Database\Eloquent\Factory;
+use Illuminate\Database\Eloquent\Factory;
 
 $factory->define(App\Models\Reply::class, function (Faker $faker) {
     //随机取一个月内的时间
