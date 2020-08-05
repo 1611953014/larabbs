@@ -37,16 +37,19 @@ Route::get('email/verify/{id}/{hash}', 'Auth\VerificationController@verify')->na
 Route::post('email/resend', 'Auth\VerificationController@resend')->name('verification.resend');
 
 //个人页面
-Route::resource('users','UsersController',['only'=>['show','update','edit']]);
+Route::resource('users', 'UsersController', ['only' => ['show', 'update', 'edit']]);
 
 //话题
 Route::resource('topics', 'TopicsController', ['only' => ['index', 'create', 'store', 'update', 'edit', 'destroy']]);
 Route::get('topics/{topic}/{slug?}', 'TopicsController@show')->name('topics.show');
 
 //分类相关
-Route::resource('categories','CategoriesController',['only'=>['show']]);
+Route::resource('categories', 'CategoriesController', ['only' => ['show']]);
 
 //上传图片
-Route::post('upload_image','TopicsController@uploadImage')->name('topics.upload_image');
+Route::post('upload_image', 'TopicsController@uploadImage')->name('topics.upload_image');
 
-Route::resource('replies', 'RepliesController', ['only' => [ 'store','destroy']]);
+Route::resource('replies', 'RepliesController', ['only' => ['store', 'destroy']]);
+
+//消息通知
+Route::resource('notifications', 'NotificationsController', ['only' => ['index']]);
