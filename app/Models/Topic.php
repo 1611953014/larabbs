@@ -2,6 +2,51 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Carbon;
+
+/**
+ * App\Models\Topic
+ *
+ * @property int $id
+ * @property string $title
+ * @property string $body
+ * @property int $user_id
+ * @property int $category_id
+ * @property int $reply_count
+ * @property int $view_count
+ * @property int $last_reply_user_id
+ * @property int $order
+ * @property string|null $excerpt
+ * @property string|null $slug
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
+ * @property-read Category $category
+ * @property-read Collection|Reply[] $replies
+ * @property-read int|null $replies_count
+ * @property-read User $user
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Topic newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Topic newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Model ordered()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Topic query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Topic recent()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Topic recentReplied()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Topic whereBody($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Topic whereCategoryId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Topic whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Topic whereExcerpt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Topic whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Topic whereLastReplyUserId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Topic whereOrder($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Topic whereReplyCount($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Topic whereSlug($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Topic whereTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Topic whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Topic whereUserId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Topic whereViewCount($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Topic withOrder($order)
+ * @mixin \Eloquent
+ */
 class Topic extends Model
 {
     protected $fillable = [
