@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Api;
 use App\Models\User;
 use Illuminate\Support\Arr;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Overtrue\LaravelSocialite\Socialite;
 use Overtrue\Socialite\AccessToken;
 use Illuminate\Auth\AuthenticationException;
 use App\Http\Requests\Api\AuthorizationRequest;
@@ -22,7 +24,7 @@ class AuthorizationsController extends Controller
 
         $credentials['password'] = $request->password;
 
-        if (!$token = \Auth::guard('api')->attempt($credentials)) {
+        if (!$token = Auth::guard('api')->attempt($credentials)) {
             throw new AuthenticationException('用户名或密码错误');
         }
 
@@ -43,7 +45,7 @@ class AuthorizationsController extends Controller
 
     public function socialStore($type, SocialAuthorizationRequest $request)
     {
-        $driver = \Socialite::driver($type);
+        $driver = Socialite::driver($type);
 
         try {
             if ($code = $request->code) {
@@ -55,7 +57,7 @@ class AuthorizationsController extends Controller
                 if ($type == 'wechat') {
                     $tokenData['openid'] = $request->openid;
                 }
-                $accessToken = new AccessToken($accessData);
+                $accessToken = new AccessToken($tokenData);
             }
 
             $oauthUser = $driver->user($accessToken);
@@ -82,7 +84,7 @@ class AuthorizationsController extends Controller
                         'weixin_unionid' => $unionid,
                     ]);
                 }
-
+                $token = auth('api')->login($user);
                 break;
         }
 
