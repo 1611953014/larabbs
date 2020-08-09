@@ -76,6 +76,7 @@ class Kernel extends HttpKernel
         'api' => [
             // 使用别名来调用中间件
             // 请见：https://learnku.com/docs/laravel/7.x/middleware#为路由分配中间件
+            \App\http\Middleware\AcceptHeader::class,
             'throttle:60,1',
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
