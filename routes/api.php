@@ -22,6 +22,7 @@ Route::prefix('v1')->namespace('Api')
     ->group(function() {
         Route::middleware('throttle:' . config('api.rate_limits.sign'))
             ->group(function(){
+                //游客可以访问的接口
                 // 图片验证码
                 Route::post('captchas', 'CaptchasController@store')
                     ->name('captchas.store');
@@ -44,6 +45,15 @@ Route::prefix('v1')->namespace('Api')
                 // 删除token
                 Route::delete('authorizations/current', 'AuthorizationsController@destroy')
                     ->name('authorizations.destroy');
+                //某个用户的详情
+                Route::get('users/{user}', 'UserController@show')
+                    ->name('users.show');
+
+                //登录后可以访问的接口
+                Route::middleware('auth:api')->group(function(){
+                    Route::get('user', 'UsersController@me')->name('user.show');
+                });
+
             });
         Route::middleware('throttle:'.config('api.rate_limits.access'))
             ->group(function(){
