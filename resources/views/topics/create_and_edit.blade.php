@@ -26,7 +26,7 @@
                   @endif
 
                   <input type="hidden" name="_token" value="{{ csrf_token() }}">
-
+{{--                  @csrf--}}
                   @include('shared._error')
 
                   <div class="form-group">
