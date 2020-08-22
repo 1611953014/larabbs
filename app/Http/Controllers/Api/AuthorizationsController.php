@@ -3,8 +3,6 @@
 namespace App\Http\Controllers\Api;
 
 use App\Models\User;
-use Illuminate\Support\Arr;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Overtrue\LaravelSocialite\Socialite;
 use Overtrue\Socialite\AccessToken;
@@ -21,7 +19,6 @@ class AuthorizationsController extends Controller
         filter_var($username, FILTER_VALIDATE_EMAIL) ?
             $credentials['email'] = $username :
             $credentials['phone'] = $username;
-
         $credentials['password'] = $request->password;
 
         if (!$token = Auth::guard('api')->attempt($credentials)) {
