@@ -12,6 +12,7 @@ class CategoriesController extends Controller
     public function index()
     {
         CategoryResource::wrap('data');
+//        return new CategoryResource(Category::all());
         return CategoryResource::collection(Category::all());
     }
 }

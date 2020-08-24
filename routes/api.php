@@ -50,6 +50,8 @@ Route::prefix('v1')->namespace('Api')
                     ->name('users.show');
                 //分类列表
                 Route::get('categories','CategoriesController@index')->name('categories.index');
+                //发布话题
+                Route::resource('topics', 'TopicsController')->only(['index','show']);
 
                 //登录后可以访问的接口
                 Route::middleware('auth:api')->group(function(){
@@ -59,6 +61,8 @@ Route::prefix('v1')->namespace('Api')
                     Route::post('images','ImagesController@store')->name('images.store');
                     //更改资料信息
                     Route::patch('user', 'UsersController@update')->name('user.update');
+                    //发布话题
+                    Route::resource('topics','TopicsController')->only(['store','update','destroy']);
                 });
 
             });
