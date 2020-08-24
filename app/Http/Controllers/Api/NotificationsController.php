@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Controllers\Controller;
 use App\Http\Resources\NotificationResource;
 use Illuminate\Http\Request;
 
@@ -10,8 +9,21 @@ class NotificationsController extends Controller
 {
     public function index(Request $request)
     {
-        $notifications = $request->user()->notifications()->paginate();
+        $notifications = $request->user()->notifications()->get();
 
         return NotificationResource::collection($notifications);
+    }
+
+    public function stats(Request $request)
+    {
+        return response()->json([
+            'unread_count' => $request->user()->notification_count,
+        ]);
+    }
+
+    public function read(Request $request)
+    {
+        $request->user()->markAsRead();
+        return response(null, 204);
     }
 }
