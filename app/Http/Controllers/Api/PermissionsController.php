@@ -14,6 +14,5 @@ class PermissionsController extends Controller
 
         PermissionResource::wrap('data');
         return PermissionResource::collection($permissions);
-
     }
 }
