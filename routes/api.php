@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Route;
     return $request->user();
 });*/
 Route::prefix('v1')->namespace('Api')
+    ->middleware('change-locale')
     ->name('api.v1.')
     ->group(function() {
         Route::middleware('throttle:' . config('api.rate_limits.sign'))
@@ -58,6 +59,10 @@ Route::prefix('v1')->namespace('Api')
                 Route::get('topics/{topic}/replies','RepliesController@index')->name('topics.replies.index');
                 //某个用户的回复列表
                 Route::get('users/{user}/replies','RepliesController@userIndex')->name('users.replies.index');
+                //资源推荐
+                Route::get('links', 'LinksController@index')->name('links.index');
+                //活跃用户
+                Route::get('actived/users','UsersController@activedIndex')->name('actived.users.index');
 
                 //登录后可以访问的接口
                 Route::middleware('auth:api')->group(function(){

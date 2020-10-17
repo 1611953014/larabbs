@@ -177,6 +177,8 @@ return [
         App\Providers\RouteServiceProvider::class,
         //阿里云短信服务容器
         App\Providers\EasySmsServiceProvider::class,
+        //jpush极光推送
+        App\Providers\JpushServiceProvider::class,
 
     ],
 
