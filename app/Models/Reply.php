@@ -2,28 +2,29 @@
 
 namespace App\Models;
 
+
 /**
  * App\Models\Reply
  *
- * @property int $id
- * @property int $topic_id
- * @property int $user_id
- * @property string $content
+ * @property int $id ID
+ * @property int $topic_id 话题ID
+ * @property int $user_id 用户ID
+ * @property string $content 回复内容
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \App\Models\Topic $topic
  * @property-read \App\Models\User $user
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Reply newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Reply newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Model ordered()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Reply query()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Model recent()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Reply whereContent($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Reply whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Reply whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Reply whereTopicId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Reply whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Reply whereUserId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Reply newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Reply newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Model ordered()
+ * @method static \Illuminate\Database\Eloquent\Builder|Reply query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Model recent()
+ * @method static \Illuminate\Database\Eloquent\Builder|Reply whereContent($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Reply whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Reply whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Reply whereTopicId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Reply whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Reply whereUserId($value)
  * @mixin \Eloquent
  */
 class Reply extends Model

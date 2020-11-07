@@ -25,7 +25,7 @@ class TopicsController extends Controller
             ->with('user', 'category')  // 预加载防止 N+1 问题
             ->paginate(20);
         $active_users = $user->getActiveUsers();
-        $links = $link->getallCached();
+        $links = $link->all();
         return view('topics.index', compact('topics','active_users','links'));
     }
 

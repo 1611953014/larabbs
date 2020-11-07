@@ -15,18 +15,22 @@ use Tymon\JWTAuth\Contracts\JWTSubject;
 /**
  * App\Models\User
  *
- * @property int $id
- * @property string $name
- * @property string $email
- * @property \Illuminate\Support\Carbon|null $email_verified_at
- * @property string $password
- * @property string|null $remember_token
+ * @property int $id ID
+ * @property string $name 昵称
+ * @property string|null $phone 手机号
+ * @property string|null $email 邮箱
+ * @property \Illuminate\Support\Carbon|null $email_verified_at 邮箱验证时间
+ * @property string|null $password 密码
+ * @property string|null $weixin_openid 微信openID
+ * @property string|null $weixin_unionid 微信unionID
+ * @property string|null $remember_token 记住我
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property string|null $avatar
- * @property string|null $introduction
- * @property int $notification_count
- * @property string|null $last_actived_at
+ * @property string|null $avatar 头像
+ * @property string|null $introduction 介绍
+ * @property int $notification_count 未读消息数
+ * @property string|null $last_actived_at 最后登录时间
+ * @property string|null $registration_id 注册来源
  * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
  * @property-read int|null $notifications_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\Spatie\Permission\Models\Permission[] $permissions
@@ -37,31 +41,29 @@ use Tymon\JWTAuth\Contracts\JWTSubject;
  * @property-read int|null $roles_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Topic[] $topics
  * @property-read int|null $topics_count
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User permission($permissions)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User query()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User recent()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User role($roles, $guard = null)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereAvatar($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereEmail($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereEmailVerifiedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereIntroduction($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereLastActivedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereNotificationCount($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User wherePassword($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereRememberToken($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|User newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|User permission($permissions)
+ * @method static \Illuminate\Database\Eloquent\Builder|User query()
+ * @method static \Illuminate\Database\Eloquent\Builder|User recent()
+ * @method static \Illuminate\Database\Eloquent\Builder|User role($roles, $guard = null)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereAvatar($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereEmail($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereEmailVerifiedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereIntroduction($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereLastActivedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereNotificationCount($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User wherePassword($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User wherePhone($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereRegistrationId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereRememberToken($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereWeixinOpenid($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereWeixinUnionid($value)
  * @mixin \Eloquent
- * @property string|null $phone
- * @property string|null $weixin_openid
- * @property string|null $weixin_unionid
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User wherePhone($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereWeixinOpenid($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereWeixinUnionid($value)
  */
 class User extends Authenticatable implements MustVerifyEmailContract,JWTSubject
 {

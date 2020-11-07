@@ -2,8 +2,6 @@
 
 namespace App\Providers;
 
-use App\Models\Topic;
-use App\Observers\TopicObserver;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\ServiceProvider;
 
