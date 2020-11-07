@@ -30,7 +30,7 @@ use Illuminate\Support\Facades\Cache;
  */
 class Link extends Model
 {
-    use Cachable;
+    use Cachable;//此模型内所有查询都会缓存,所有更改都会自动刷新缓存
 
     protected $cachePrefix = "links";
 
@@ -38,12 +38,16 @@ class Link extends Model
 
     protected $cache_expire_in_seconds = 1440 * 60;
 
-    public function getAllCached()
+    /**
+     * 使用了缓存包，这个方法没用了
+     * @return mixed
+     */
+    /*public function getAllCached()
     {
         // 尝试从缓存中取出 cache_key 对应的数据。如果能取到，便直接返回数据。
         // 否则运行匿名函数中的代码来取出 links 表中所有的数据，返回的同时做了缓存。
         return Cache::remember($this->cachePrefix, $this->cache_expire_in_seconds, function(){
             return $this->all();
         });
-    }
+    }*/
 }
