@@ -73,6 +73,9 @@ class User extends Authenticatable implements MustVerifyEmailContract,JWTSubject
         notify as protected laravelNotify;
     }
 
+    /**
+     * @param $instance
+     */
     public function notify($instance)
     {
         // 如果要通知的人是当前用户，就不必通知了！
